@@ -79,9 +79,8 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 0 var(--spacing);
-            overflow-x: auto;
-            white-space: nowrap;
+            padding: 0 var(--spacing); /* Ensures padding matches index.html */
+            white-space: nowrap; /* Keeps items on one line */
             transition: max-height 0.3s ease;
         }
 
@@ -97,6 +96,7 @@
             border-radius: var(--radius-sm);
             transition: all 0.3s ease;
             font-size: var(--font-size-base);
+            display: inline-block; /* Ensures proper rendering */
         }
 
         .nav-item a:hover,
@@ -620,14 +620,17 @@
         document.querySelectorAll('.nav-item a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const href = link.getAttribute('href');
-                if (href.includes('#')) {
-                    window.location.href = href;
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        document.querySelectorAll('.nav-item a').forEach(a => a.classList.remove('active'));
+                        link.classList.add('active');
+                    }
                 } else {
-                    window.location.href = href;
+                    window.location.href = targetId;
                 }
-                document.querySelectorAll('.nav-item a').forEach(a => a.classList.remove('active'));
-                link.classList.add('active');
                 if (window.innerWidth <= 768) toggleNav();
             });
         });
