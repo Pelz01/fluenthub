@@ -251,7 +251,7 @@
             border: 1px solid var(--dark-surface-light);
             overflow: hidden;
             position: relative;
-            min-height: 22rem; /* Ensures consistent height for button alignment */
+            min-height: 22rem; /* Ensures consistent height for button alignment on desktop */
             display: flex;
             flex-direction: column;
         }
@@ -761,12 +761,13 @@
                 margin: 0 0 1.5rem 0;
             }
             .event-image, .resource-image {
-                height: 160px; /* Adjusted for mobile */
-                object-fit: contain; /* Changed to contain for full image visibility */
+                height: 180px; /* Increased for better visibility on mobile */
+                object-fit: cover; /* Kept as cover for now */
+                margin-bottom: 1rem;
             }
             .event-card, .resource-card {
-                min-height: 20.5rem; /* Slightly increased to accommodate contain fit */
                 padding: 1rem; /* Reduced padding for mobile */
+                /* Removed fixed min-height to allow dynamic adjustment */
             }
             .event-subheader, .resource-subheader {
                 font-size: 0.85rem; /* Slightly smaller for mobile */
@@ -794,11 +795,12 @@
                 font-size: 0.9rem;
             }
             .event-image, .resource-image {
-                height: 140px; /* Further adjusted for smaller screens */
-                object-fit: contain; /* Changed to contain for full image visibility */
+                height: 160px; /* Increased for better visibility on smaller screens */
+                object-fit: cover; /* Kept as cover for now */
+                margin-bottom: 1rem;
             }
             .event-card, .resource-card {
-                min-height: 18.5rem; /* Slightly increased to accommodate contain fit */
+                /* Removed fixed min-height to allow dynamic adjustment */
             }
             .event-subheader, .resource-subheader {
                 font-size: 0.8rem; /* Even smaller for very small screens */
