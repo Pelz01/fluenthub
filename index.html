@@ -762,9 +762,10 @@
             }
             .event-image, .resource-image {
                 height: 160px; /* Adjusted for mobile */
+                object-fit: contain; /* Changed to contain for full image visibility */
             }
             .event-card, .resource-card {
-                min-height: 20rem; /* Adjusted to fit content on mobile */
+                min-height: 20.5rem; /* Slightly increased to accommodate contain fit */
                 padding: 1rem; /* Reduced padding for mobile */
             }
             .event-subheader, .resource-subheader {
@@ -794,9 +795,10 @@
             }
             .event-image, .resource-image {
                 height: 140px; /* Further adjusted for smaller screens */
+                object-fit: contain; /* Changed to contain for full image visibility */
             }
             .event-card, .resource-card {
-                min-height: 18rem; /* Adjusted to fit content on smaller screens */
+                min-height: 18.5rem; /* Slightly increased to accommodate contain fit */
             }
             .event-subheader, .resource-subheader {
                 font-size: 0.8rem; /* Even smaller for very small screens */
