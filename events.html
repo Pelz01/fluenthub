@@ -255,8 +255,7 @@
             color: var(--text-light);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
+            flex-grow: 1; /* Ensures content stretches to fill available space */
         }
 
         .event-image {
@@ -272,6 +271,12 @@
             color: var(--text-muted);
             margin-bottom: 1rem;
             line-height: 1.4;
+            min-height: 2.8rem; /* Fixed height to ensure consistency */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limits to 2 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .category-label {
@@ -300,6 +305,7 @@
             font-size: var(--font-size-base);
             width: 100%;
             text-align: center;
+            margin-top: auto; /* Pushes button to the bottom */
         }
 
         .action-btn:hover {
@@ -381,6 +387,7 @@
             }
             .event-subheader {
                 font-size: 0.85rem;
+                min-height: 2.55rem; /* Adjusted for smaller font */
             }
         }
 
@@ -409,6 +416,7 @@
             }
             .event-subheader {
                 font-size: 0.8rem;
+                min-height: 2.4rem; /* Adjusted for smaller font */
             }
         }
     </style>
@@ -420,7 +428,7 @@
             <li class="nav-item"><a href="/#highlights">Highlights</a></li>
             <li class="nav-item"><a href="/#stats">Stats</a></li>
             <li class="nav-item"><a href="/projects.html">Projects</a></li>
-            <li class="nav-item"><a href="/#resources">Resources</a></li>
+            <li class="nav-item"><a href="/resources.html">Resources</a></li>
             <li class="nav-item"><a href="/events.html" class="active">Events</a></li>
         </ul>
     </nav>
