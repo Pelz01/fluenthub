@@ -51,7 +51,6 @@
             box-shadow: var(--shadow-light);
             padding: calc(var(--spacing) / 2) 0;
             z-index: 100;
-            width: 100%;
         }
 
         .nav-toggle {
@@ -80,24 +79,24 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 0 calc(var(--spacing) / 2);
-            flex-wrap: nowrap; /* Default behavior for larger screens */
+            padding: 0 var(--spacing);
+            overflow-x: auto;
+            white-space: nowrap;
+            transition: max-height 0.3s ease;
         }
 
         .nav-item {
-            margin: 0 calc(var(--spacing-mobile) / 2); /* Reduced margin for tighter fit */
+            margin-right: var(--spacing-mobile);
         }
 
         .nav-item a {
             font-weight: 500;
             color: var(--text-white);
             text-decoration: none;
-            padding: 0.5rem 1rem; /* Reduced padding for tighter fit */
+            padding: 0.75rem 1.25rem;
             border-radius: var(--radius-sm);
             transition: all 0.3s ease;
             font-size: var(--font-size-base);
-            display: block;
-            white-space: nowrap;
         }
 
         .nav-item a:hover,
@@ -207,7 +206,7 @@
             gap: var(--spacing);
         }
 
-        .card {
+        .event-card {
             background-color: var(--dark-surface);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -216,12 +215,12 @@
             border: 1px solid var(--dark-surface-light);
             overflow: hidden;
             position: relative;
-            min-height: 18rem;
+            min-height: 22rem;
             display: flex;
             flex-direction: column;
         }
 
-        .card::before {
+        .event-card::before {
             content: "";
             position: absolute;
             top: 0;
@@ -233,34 +232,46 @@
             transition: opacity 0.3s ease;
         }
 
-        .card:hover {
+        .event-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             border-color: rgba(50, 254, 107, 0.3);
         }
 
-        .card:hover::before {
+        .event-card:hover::before {
             opacity: 1;
         }
 
-        .card-title {
+        .event-title {
             font-weight: 600;
             font-size: 1.25rem;
             color: var(--text-white);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
         }
 
-        .card-content {
+        .event-content {
             color: var(--text-light);
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            flex-grow: 1;
         }
 
-        .card-content p {
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
             margin-bottom: 1rem;
-            flex-grow: 1;
+        }
+
+        .event-subheader {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.4;
         }
 
         .category-label {
@@ -287,6 +298,8 @@
             border: 1px solid transparent;
             text-decoration: none;
             font-size: var(--font-size-base);
+            width: 100%;
+            text-align: center;
         }
 
         .action-btn:hover {
@@ -346,7 +359,7 @@
             .section-desc {
                 font-size: 0.95rem;
             }
-            .card-title {
+            .event-title {
                 font-size: 1.125rem;
             }
             .container {
@@ -360,17 +373,25 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            .event-image {
+                height: 180px;
+            }
+            .event-card {
+                padding: 1rem;
+            }
+            .event-subheader {
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 480px) {
             .container {
                 padding: var(--spacing-tiny);
             }
-            .card {
-                padding: 1rem;
-                min-height: 16rem;
+            .event-card {
+                padding: 0.75rem;
             }
-            .card-title {
+            .event-title {
                 font-size: 1rem;
             }
             .action-btn {
@@ -383,8 +404,11 @@
             .search-btn {
                 padding: 0.4rem 0.75rem;
             }
-            .card-content {
-                font-size: 0.875rem;
+            .event-image {
+                height: 160px;
+            }
+            .event-subheader {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -395,9 +419,9 @@
         <ul class="nav-list">
             <li class="nav-item"><a href="/#highlights">Highlights</a></li>
             <li class="nav-item"><a href="/#stats">Stats</a></li>
-            <li class="nav-item"><a href="/projects">Projects</a></li>
+            <li class="nav-item"><a href="/projects.html">Projects</a></li>
             <li class="nav-item"><a href="/#resources">Resources</a></li>
-            <li class="nav-item"><a href="/events" class="active">Events</a></li>
+            <li class="nav-item"><a href="/events.html" class="active">Events</a></li>
         </ul>
     </nav>
 
@@ -414,47 +438,52 @@
             <p class="section-desc">Discover upcoming real-life and online events in the Fluent ecosystem.</p>
 
             <div class="card-grid">
-                <div class="card">
+                <div class="event-card">
                     <div class="category-label">Online Event</div>
-                    <h3 class="card-title">Fluent Dev Summit 2025</h3>
-                    <div class="card-content">
-                        <p>Join us for a virtual summit on March 20, 2025, to explore Fluent innovations.</p>
+                    <img src="https://i.ibb.co/23JQ2N6S/Gkj5-L20ac-AAJGq-F.jpg" alt="Online Event Image" class="event-image" />
+                    <h3 class="event-title">Fluent Dev Summit 2025</h3>
+                    <p class="event-subheader">Tuesday, Mar 20th | 1-5 PM</p>
+                    <div class="event-content">
                         <a href="#view-details-1" class="action-btn outline">View Details</a>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="event-card">
                     <div class="category-label">Real-Life Event</div>
-                    <h3 class="card-title">Fluent Community Meetup</h3>
-                    <div class="card-content">
-                        <p>Meet Fluent enthusiasts in New York on April 10, 2025.</p>
+                    <img src="https://i.ibb.co/CqC2VPM/Gkqjbov-WUAAOtuq.jpg" alt="Real-Life Event Image" class="event-image" />
+                    <h3 class="event-title">Fluent Community Meetup</h3>
+                    <p class="event-subheader">Thursday, Apr 10th | 10 AM - 2 PM | New York</p>
+                    <div class="event-content">
                         <a href="#view-details-2" class="action-btn outline">View Details</a>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="event-card">
                     <div class="category-label">Project Event</div>
-                    <h3 class="card-title">FluentNFTs Launch Party</h3>
-                    <div class="card-content">
-                        <p>Celebrate the FluentNFTs marketplace launch online on May 5, 2025.</p>
+                    <img src="https://i.ibb.co/67L86LZF/Gkr7-F0-AXIAAv-Ub-Q.jpg" alt="Project Event Image" class="event-image" />
+                    <h3 class="event-title">FluentNFTs Launch Party</h3>
+                    <p class="event-subheader">Monday, May 5th | 6-10 PM | Virtual</p>
+                    <div class="event-content">
                         <a href="#view-details-3" class="action-btn outline">View Details</a>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="event-card">
                     <div class="category-label">Online Event</div>
-                    <h3 class="card-title">Fluent Hackathon Q2 2025</h3>
-                    <div class="card-content">
-                        <p>Compete in a global hackathon from June 1-3, 2025, to build on Fluent.</p>
+                    <img src="https://i.ibb.co/23JQ2N6S/Gkj5-L20ac-AAJGq-F.jpg" alt="Hackathon Image" class="event-image" />
+                    <h3 class="event-title">Fluent Hackathon Q2 2025</h3>
+                    <p class="event-subheader">June 1-3, 2025 | Virtual</p>
+                    <div class="event-content">
                         <a href="#view-details-4" class="action-btn outline">View Details</a>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="event-card">
                     <div class="category-label">Real-Life Event</div>
-                    <h3 class="card-title">Fluent Conference SF</h3>
-                    <div class="card-content">
-                        <p>Join us in San Francisco on July 15, 2025, for keynotes and networking.</p>
+                    <img src="https://i.ibb.co/CqC2VPM/Gkqjbov-WUAAOtuq.jpg" alt="Conference Image" class="event-image" />
+                    <h3 class="event-title">Fluent Conference SF</h3>
+                    <p class="event-subheader">Tuesday, Jul 15th | 9 AM - 5 PM | San Francisco</p>
+                    <div class="event-content">
                         <a href="#view-details-5" class="action-btn outline">View Details</a>
                     </div>
                 </div>
@@ -495,11 +524,11 @@
 
         document.querySelector('.search-input').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
-            const cards = document.querySelectorAll('.card');
+            const cards = document.querySelectorAll('.event-card');
             cards.forEach(card => {
-                const title = card.querySelector('.card-title').textContent.toLowerCase();
-                const content = card.querySelector('.card-content p').textContent.toLowerCase();
-                card.style.display = (searchTerm === '' || title.includes(searchTerm) || content.includes(searchTerm)) ? 'flex' : 'none';
+                const title = card.querySelector('.event-title').textContent.toLowerCase();
+                const subheader = card.querySelector('.event-subheader').textContent.toLowerCase();
+                card.style.display = (searchTerm === '' || title.includes(searchTerm) || subheader.includes(searchTerm)) ? 'flex' : 'none';
             });
         });
     </script>
