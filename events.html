@@ -79,9 +79,8 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 0 var(--spacing);
-            overflow-x: auto;
-            white-space: nowrap;
+            padding: 0 var(--spacing); /* Ensures padding matches index.html */
+            white-space: nowrap; /* Keeps items on one line */
             transition: max-height 0.3s ease;
         }
 
@@ -97,6 +96,7 @@
             border-radius: var(--radius-sm);
             transition: all 0.3s ease;
             font-size: var(--font-size-base);
+            display: inline-block; /* Ensures proper rendering */
         }
 
         .nav-item a:hover,
@@ -255,7 +255,7 @@
             color: var(--text-light);
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Ensures content stretches to fill available space */
+            flex-grow: 1;
         }
 
         .event-image {
@@ -271,9 +271,9 @@
             color: var(--text-muted);
             margin-bottom: 1rem;
             line-height: 1.4;
-            min-height: 2.8rem; /* Fixed height to ensure consistency */
+            min-height: 2.8rem;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limits to 2 lines */
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -305,7 +305,7 @@
             font-size: var(--font-size-base);
             width: 100%;
             text-align: center;
-            margin-top: auto; /* Pushes button to the bottom */
+            margin-top: auto;
         }
 
         .action-btn:hover {
@@ -387,7 +387,7 @@
             }
             .event-subheader {
                 font-size: 0.85rem;
-                min-height: 2.55rem; /* Adjusted for smaller font */
+                min-height: 2.55rem;
             }
         }
 
@@ -416,7 +416,7 @@
             }
             .event-subheader {
                 font-size: 0.8rem;
-                min-height: 2.4rem; /* Adjusted for smaller font */
+                min-height: 2.4rem;
             }
         }
     </style>
@@ -425,11 +425,11 @@
     <nav class="nav-bar" aria-label="Main navigation">
         <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         <ul class="nav-list">
-            <li class="nav-item"><a href="/#highlights">Highlights</a></li>
-            <li class="nav-item"><a href="/#stats">Stats</a></li>
-            <li class="nav-item"><a href="/projects.html">Projects</a></li>
-            <li class="nav-item"><a href="/resources.html">Resources</a></li>
-            <li class="nav-item"><a href="/events.html" class="active">Events</a></li>
+            <li class="nav-item"><a href="#highlights">Highlights</a></li>
+            <li class="nav-item"><a href="#stats">Stats</a></li>
+            <li class="nav-item"><a href="projects.html">Projects</a></li>
+            <li class="nav-item"><a href="#resources">Resources</a></li>
+            <li class="nav-item"><a href="events.html" class="active">Events</a></li>
         </ul>
     </nav>
 
@@ -522,10 +522,17 @@
         document.querySelectorAll('.nav-item a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const href = link.getAttribute('href');
-                window.location.href = href;
-                document.querySelectorAll('.nav-item a').forEach(a => a.classList.remove('active'));
-                link.classList.add('active');
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        document.querySelectorAll('.nav-item a').forEach(a => a.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                } else {
+                    window.location.href = targetId;
+                }
                 if (window.innerWidth <= 768) toggleNav();
             });
         });
