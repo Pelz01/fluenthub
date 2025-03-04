@@ -128,7 +128,7 @@
 
         h1 {
             font-weight: 700;
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2rem, 5vw, 4rm);
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             -webkit-background-clip: text;
@@ -230,7 +230,7 @@
         .section-label {
             text-transform: uppercase;
             letter-spacing: 0.125rem;
-            font-size: 0.85rm;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--text-muted);
             margin-bottom: 0.5rem;
@@ -422,51 +422,6 @@
             height: 100%;
             background: radial-gradient(circle at top right, var(--primary-transparent), transparent 70%);
             opacity: 0.3;
-        }
-
-        .slider {
-            position: relative;
-            overflow: hidden;
-            max-width: 75rem;
-            margin: 0 auto;
-            background-color: var(--dark-surface);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem 0;
-        }
-
-        .slider-cards {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slider-card {
-            flex: 0 0 33.333%;
-            max-width: 33.333%;
-            padding: 0 0.5rem;
-            box-sizing: border-box;
-        }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: var(--spacing);
-            padding: 0.5rem 0;
-        }
-
-        .dot {
-            width: 0.625rem;
-            height: 0.625rem;
-            background-color: var(--dark-surface-lighter);
-            border-radius: 50%;
-            margin: 0 0.3125rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background-color: var(--primary);
-            transform: scale(1.2);
         }
 
         .glow-card {
@@ -719,7 +674,7 @@
                 font-size: 1.125rem;
             }
             .stats-value {
-                font-size: 1.5rm;
+                font-size: 1.5rem;
             }
             .container {
                 padding: var(--spacing-mobile) var(--spacing-tiny);
@@ -741,10 +696,6 @@
             }
             .hero-button {
                 margin-top: 1rem;
-            }
-            .slider-card {
-                flex: 0 0 100%;
-                max-width: 100%;
             }
             .footer-top {
                 justify-content: flex-start;
@@ -836,41 +787,38 @@
                 <h2>Fluent Ecosystem Highlights</h2>
                 <p class="section-desc">Latest updates and key milestones from the Fluent ecosystem on this Fluent chain.</p>
                 
-                <div class="slider" id="highlights-slider">
-                    <div class="slider-cards">
-                        <div class="slider-card card-grid">
-                            <div class="card glow-card">
-                                <div class="category-label">Top Highlight</div>
-                                <h3 class="card-title">Network Growth</h3>
-                                <div class="card-content">
-                                    <p>The Fluent ecosystem continues to expand with significant user adoption and growing developer interest on this Fluent chain.</p>
-                                    <div class="stats">
-                                        <span class="stats-label">Weekly Active Users:</span>
-                                        <span class="stats-value">1.5M+</span>
-                                    </div>
-                                    <a href="#read-more-1" class="action-btn primary">Read More</a>
-                                </div>
+                <div class="card-grid" id="highlights-grid"> <!-- Changed to card-grid instead of slider -->
+                    <div class="card glow-card">
+                        <div class="category-label">Top Highlight</div>
+                        <h3 class="card-title">Network Growth</h3>
+                        <div class="card-content">
+                            <p>The Fluent ecosystem continues to expand with significant user adoption and growing developer interest on this Fluent chain.</p>
+                            <div class="stats">
+                                <span class="stats-label">Weekly Active Users:</span>
+                                <span class="stats-value">1.5M+</span>
                             </div>
-                        </div>
-                        
-                        <div class="slider-card card-grid">
-                            <div class="card">
-                                <div class="category-label">Top Milestone</div>
-                                <h3 class="card-title">Upcoming Launches</h3>
-                                <div class="card-content">
-                                    <ul>
-                                        <li>Testnet Launch: March 15, 2025 <span id="countdown"></span></li>
-                                        <li>Mainnet Release: Q2 2025</li>
-                                        <li>Partner Integrations: Ongoing</li>
-                                    </ul>
-                                    <a href="#view-roadmap-1" class="action-btn outline">View Roadmap</a>
-                                </div>
-                            </div>
+                            <a href="#read-more-1" class="action-btn primary">Read More</a>
                         </div>
                     </div>
-                    <div class="slider-dots" id="highlights-dots" role="tablist" aria-label="Highlights slider navigation">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
+                    <div class="card">
+                        <div class="category-label">Top Milestone</div>
+                        <h3 class="card-title">Upcoming Launches</h3>
+                        <div class="card-content">
+                            <ul>
+                                <li>Testnet Launch: March 15, 2025 <span id="countdown"></span></li>
+                                <li>Mainnet Release: Q2 2025</li>
+                                <li>Partner Integrations: Ongoing</li>
+                            </ul>
+                            <a href="#view-roadmap-1" class="action-btn outline">View Roadmap</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="category-label">Recent Update</div>
+                        <h3 class="card-title">Community Expansion</h3>
+                        <div class="card-content">
+                            <p>The Fluent community grows with new contributors and events planned for 2025.</p>
+                            <a href="#read-more-2" class="action-btn outline">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -884,45 +832,30 @@
             </div>
             <p class="section-desc">Curated projects on this Fluent chain.</p>
             
-            <div class="slider" id="projects-slider">
-                <div class="slider-cards">
-                    <div class="slider-card card-grid">
-                        <div class="card">
-                            <div class="category-label">Crypto Wallets</div>
-                            <h3 class="card-title">FluentWallet</h3>
-                            <div class="card-content">
-                                <p>A secure, non-custodial wallet for Fluent users on this Fluent chain.</p>
-                                <a href="#learn-more-1" class="action-btn outline">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slider-card card-grid">
-                        <div class="card">
-                            <div class="category-label">Decentralized Finance</div>
-                            <h3 class="card-title">FluentDeFi</h3>
-                            <div class="card-content">
-                                <p>A DeFi platform for lending on this Fluent chain.</p>
-                                <a href="#learn-more-2" class="action-btn outline">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slider-card card-grid">
-                        <div class="card">
-                            <div class="category-label">NFTs & Tools</div>
-                            <h3 class="card-title">FluentNFTs</h3>
-                            <div class="card-content">
-                                <p>An NFT marketplace for creating and trading on this Fluent chain.</p>
-                                <a href="#learn-more-3" class="action-btn outline">Learn More</a>
-                            </div>
-                        </div>
+            <div class="card-grid" id="projects-grid"> <!-- Changed to card-grid instead of slider -->
+                <div class="card">
+                    <div class="category-label">Crypto Wallets</div>
+                    <h3 class="card-title">FluentWallet</h3>
+                    <div class="card-content">
+                        <p>A secure, non-custodial wallet for Fluent users on this Fluent chain.</p>
+                        <a href="#learn-more-1" class="action-btn outline">Learn More</a>
                     </div>
                 </div>
-                <div class="slider-dots" id="projects-dots" role="tablist" aria-label="Projects slider navigation">
-                    <span class="dot active" data-slide="0"></span>
-                    <span class="dot" data-slide="1"></span>
-                    <span class="dot" data-slide="2"></span>
+                <div class="card">
+                    <div class="category-label">Decentralized Finance</div>
+                    <h3 class="card-title">FluentDeFi</h3>
+                    <div class="card-content">
+                        <p>A DeFi platform for lending on this Fluent chain.</p>
+                        <a href="#learn-more-2" class="action-btn outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="category-label">NFTs & Tools</div>
+                    <h3 class="card-title">FluentNFTs</h3>
+                    <div class="card-content">
+                        <p>An NFT marketplace for creating and trading on this Fluent chain.</p>
+                        <a href="#learn-more-3" class="action-btn outline">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -964,7 +897,7 @@
             <span class="section-label">Featured Resources</span>
             <div class="section-header">
                 <h2>Resources on Fluent</h2>
-                <a href="resources.html" class="action-btn outline">Browse All Resources →</a> <!-- Updated to resources.html -->
+                <a href="resources.html" class="action-btn outline">Browse All Resources →</a>
             </div>
             <p class="section-desc">Featured educational content on the Fluent chain.</p>
             
@@ -1150,25 +1083,6 @@
         }
         updateCountdown();
         setInterval(updateCountdown, 60000);
-
-        function setupSlider(sliderId, dotsId, totalSlides) {
-            let slideIndex = 0;
-            const sliderCards = document.querySelector(`#${sliderId} .slider-cards`);
-            const dots = document.querySelectorAll(`#${dotsId} .dot`);
-            function showSlide(index) {
-                slideIndex = index;
-                if (slideIndex >= totalSlides) slideIndex = 0;
-                if (slideIndex < 0) slideIndex = totalSlides - 1;
-                sliderCards.style.transform = `translateX(-${slideIndex * 100}%)`;
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[slideIndex].classList.add('active');
-            }
-            dots.forEach(dot => dot.addEventListener('click', () => showSlide(parseInt(dot.getAttribute('data-slide')))));
-            setInterval(() => showSlide(slideIndex + 1), 10000);
-        }
-
-        setupSlider('highlights-slider', 'highlights-dots', 2);
-        setupSlider('projects-slider', 'projects-dots', 3);
     </script>
 </body>
 </html>
